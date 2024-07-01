@@ -117,7 +117,6 @@ jobs:
         working-directory: out/
         run: |
           mkdir ./gh-release
-          cp ./*.deb ./gh-release/
           find . -name '${{ needs.meta.outputs.bin_name }}-*' -executable -type f -maxdepth 1 -print0 | xargs -0 -I {} tar --transform='flags=r;s|.*|${{ needs.meta.outputs.bin_name }}|' -czvf ./gh-release/{}.tar.gz {}
       - name: Upload binaries
         uses: actions/upload-artifact@v3

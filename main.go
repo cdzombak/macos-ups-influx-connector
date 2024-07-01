@@ -51,13 +51,13 @@ func readPmSet() ([]parsedUPSLine, error) {
 			log.Printf("failed to parse pmset line (err 1): '%s'", l)
 			continue
 		}
-		nameIdLineParts := strings.Split(lParts[0], " ")
-		if len(nameIdLineParts) != 2 {
+		nameAndIDLineParts := strings.Split(lParts[0], " ")
+		if len(nameAndIDLineParts) != 2 {
 			log.Printf("failed to parse pmset line (err 2): '%s'", l)
 			continue
 		}
-		lParsed.model = nameIdLineParts[0][1:]
-		lParsed.id = nameIdLineParts[1][4 : len(nameIdLineParts[1])-1]
+		lParsed.model = nameAndIDLineParts[0][1:]
+		lParsed.id = nameAndIDLineParts[1][4 : len(nameAndIDLineParts[1])-1]
 		if strings.Contains(lParts[1], "AC attached") {
 			lParsed.acAttached = true
 		}

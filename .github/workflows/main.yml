@@ -111,15 +111,15 @@ jobs:
       - name: Go version
         run: go version
 
-      - name: Build binaries & packages
-        run: make package
+      - name: Build binaries
+        run: make all
       - name: Prepare release artifacts
         working-directory: out/
         run: |
           mkdir ./gh-release
           cp ./*.deb ./gh-release/
           find . -name '${{ needs.meta.outputs.bin_name }}-*' -executable -type f -maxdepth 1 -print0 | xargs -0 -I {} tar --transform='flags=r;s|.*|${{ needs.meta.outputs.bin_name }}|' -czvf ./gh-release/{}.tar.gz {}
-      - name: Upload binaries & packages
+      - name: Upload binaries
         uses: actions/upload-artifact@v3
         with:
           name: ${{ needs.meta.outputs.bin_name }} Binary Artifacts

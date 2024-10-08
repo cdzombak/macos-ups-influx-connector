@@ -1,3 +1,6 @@
+> [!WARNING]  
+> **This program is no longer maintained.** See instead [macos-ups-mqtt-connector](https://github.com/cdzombak/macos-ups-mqtt-connector) & [mqtt2influxdb](https://github.com/cdzombak/mqtt2influxdb).
+
 # macos-ups-influx-connector
 
 Ship basic UPS stats from macOS to InfluxDB.
